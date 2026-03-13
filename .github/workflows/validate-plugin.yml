@@ -1,0 +1,65 @@
+name: Validate Plugin
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Check plugin.json exists
+      run: |
+        if [ ! -f ".claude-plugin/plugin.json" ]; then
+          echo "Error: plugin.json not found"
+          exit 1
+        fi
+    
+    - name: Validate plugin.json format
+      run: |
+        if ! jq empty .claude-plugin/plugin.json; then
+          echo "Error: plugin.json is not valid JSON"
+          exit 1
+        fi
+    
+    - name: Check required folders
+      run: |
+        for dir in skills commands templates examples; do
+          if [ ! -d "$dir" ]; then
+            echo "Error: Required folder $dir not found"
+            exit 1
+          fi
+        done
+    
+    - name: Check SKILL.md exists
+      run: |
+        if [ ! -f "skills/governance/SKILL.md" ]; then
+          echo "Error: SKILL.md not found"
+          exit 1
+        fi
+    
+    - name: Validate JSON templates
+      run: |
+        for file in templates/*.json; do
+          if [ -f "$file" ]; then
+            if ! jq empty "$file"; then
+              echo "Error: $file is not valid JSON"
+              exit 1
+            fi
+          fi
+        done
+    
+    - name: Check README exists
+      run: |
+        if [ ! -f "README.md" ]; then
+          echo "Error: README.md not found"
+          exit 1
+        fi
+    
+    - name: Success
+      run: echo "✓ All validation checks passed"
