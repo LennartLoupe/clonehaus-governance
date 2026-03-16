@@ -1,37 +1,62 @@
 {
-    "name": "clonehaus-governance",
-    "displayName": "Clonehaus Governance",
-    "description": "Define authority boundaries, create Agent Charters, and export governance code for AI agents. Built for regulated industries deploying Cowork agents.",
-    "version": "0.1.0",
-    "author": {
-      "name": "Clonehaus",
-      "email": "hello@clonehaus.ai",
-      "url": "https://clonehaus.ai"
+  "name": "clonehaus-governance",
+  "displayName": "Clonehaus Governance",
+  "description": "Deploy governed AI agents from clonehaus.ai into Cowork with full audit trail and accountability. Design governance on the platform, deploy in Cowork.",
+  "version": "0.2.0",
+  "author": {
+    "name": "Clonehaus",
+    "email": "hello@clonehaus.ai",
+    "url": "https://clonehaus.ai"
+  },
+  "homepage": "https://github.com/LennartLoupe/clonehaus-governance",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LennartLoupe/clonehaus-governance"
+  },
+  "license": "MIT",
+  "keywords": [
+    "governance",
+    "compliance",
+    "EU AI Act",
+    "agent authority",
+    "accountability",
+    "legal",
+    "LangChain",
+    "CrewAI",
+    "N8N",
+    "cowork",
+    "claude"
+  ],
+  "compatibility": {
+    "cowork": ">=1.0.0"
+  },
+  "skills": [
+    "governance"
+  ],
+  "commands": [
+    {
+      "name": "connect",
+      "file": "commands/connect.md",
+      "description": "Connect to your clonehaus.ai account"
     },
-    "homepage": "https://github.com/LennartLoupe/clonehaus-governance",
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/LennartLoupe/clonehaus-governance"
+    {
+      "name": "list",
+      "file": "commands/list-agents.md",
+      "description": "Show your governed agents from clonehaus.ai"
     },
-    "license": "MIT",
-    "keywords": [
-      "governance",
-      "compliance",
-      "EU AI Act",
-      "agent authority",
-      "accountability",
-      "legal",
-      "LangChain",
-      "CrewAI",
-      "N8N",
-      "cowork",
-      "claude"
-    ],
-    "compatibility": {
-      "cowork": ">=1.0.0"
-    },
-    "components": {
-      "skills": ["governance"],
-      "commands": ["create-charter", "export-context", "check-compliance", "ratify"]
+    {
+      "name": "load",
+      "file": "commands/load-agent.md",
+      "description": "Load a governed agent into this Cowork session"
     }
+  ],
+  "requirements": {
+    "platform_account": "Requires clonehaus.ai account with sealed agents"
+  },
+  "links": {
+    "platform": "https://clonehaus.ai",
+    "docs": "https://github.com/LennartLoupe/clonehaus-governance/tree/main/docs",
+    "support": "mailto:info@clonehaus.ai",
+    "github": "https://github.com/LennartLoupe/clonehaus-governance"
   }
+}

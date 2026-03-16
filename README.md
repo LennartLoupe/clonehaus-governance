@@ -1,12 +1,21 @@
 # Clonehaus Governance Plugin
 
-Define authority boundaries and create Agent Charters for your Claude Cowork agents. Export governance code for LangChain, N8N, CrewAI, and more.
+Deploy governed AI agents from clonehaus.ai into Cowork. Design governance on the platform, deploy in Cowork with full audit trail.
 
 **Built for regulated industries facing the August 2026 EU AI Act deadline.**
 
 ---
 
-## 🚀 Quick Start
+## Prerequisites
+
+- [Claude Cowork](https://claude.ai/cowork) (paid plan required)
+- [clonehaus.ai account](https://clonehaus.ai) (sign up for free)
+- At least one sealed agent on your clonehaus.ai account
+
+---
+
+## Installation
+
 ```bash
 # Install the plugin
 claude plugin add https://github.com/LennartLoupe/clonehaus-governance
@@ -17,59 +26,132 @@ cd clonehaus-governance
 claude plugin install .
 ```
 
-In Cowork:
+---
+
+## Quick Start
+
+### Step 1: Create Agent on Platform
+
+1. Go to [clonehaus.ai](https://clonehaus.ai)
+2. Create a new agent
+3. Define authority boundaries (5 categories)
+4. Ratify with named human
+5. Agent status → SEALED
+
+### Step 2: Generate API Key
+
+1. Navigate to Settings → API Keys
+2. Click "Generate New Key"
+3. Copy the key (shown only once)
+
+### Step 3: Connect Plugin
+
+```text
+/clonehaus:connect
 ```
-/clonehaus:create-charter
+
+Paste your API key when prompted.
+
+### Step 4: Load Your Agent
+
+```text
+/clonehaus:list
+/clonehaus:load "Your Agent Name"
 ```
+
+Your governed agent is now active in Cowork! 🎉
 
 ---
 
-## 🎯 What This Plugin Does
+## What This Plugin Does
 
-**Before deploying AI agents, define:**
-- ✓ Decision authority (what they can/cannot decide)
+**On the platform, you design and seal governance for every agent:**
+- ✓ Decision authority (what they can and cannot decide)
 - ✓ Data access boundaries (what data they can touch)
 - ✓ External communication rules (who they can talk to)
 - ✓ System access levels (what systems they can use)
 - ✓ Escalation triggers (when they must ask for help)
 
-**Then export governance as working code for:**
-- LangChain (Python)
-- LangGraph (Python)
-- CrewAI (Python)
-- N8N (JSON workflow)
-- AutoGen (Python)
-- Semantic Kernel (Python & C#)
+**In Cowork, you deploy those governed agents into a live session:**
+- ✓ Connect Cowork to your clonehaus.ai account
+- ✓ Load sealed agents with named human accountability
+- ✓ Run with embedded authority boundaries
+- ✓ Send escalations back to the platform audit trail
 
 ---
 
-## 📖 Commands
+## Commands
 
-| Command | Purpose |
-|---------|---------|
-| `/clonehaus:create-charter` | Interactive charter creation |
-| `/clonehaus:export-context --framework=<n>` | Generate framework code |
-| `/clonehaus:check-compliance` | Validate EU AI Act requirements |
-| `/clonehaus:ratify` | Create accountability record |
+| Command | Description | Usage |
+|---------|-------------|-------|
+| `/clonehaus:connect` | Connect to your clonehaus.ai account | `/clonehaus:connect` |
+| `/clonehaus:list` | Show your governed agents | `/clonehaus:list` |
+| `/clonehaus:load` | Deploy an agent into Cowork | `/clonehaus:load "Agent Name"` |
 
 ---
 
-## 🏗️ Framework Support
+## How It Works
 
-### Supported Now (v0.1.0)
+**Design Time (clonehaus.ai platform):**
+1. Create agent charter with 5 authority categories
+2. Define what agent can/cannot do
+3. Run workflow simulation
+4. Ratify with named human
+5. Agent sealed in database
+
+**Runtime (Cowork plugin):**
+1. Connect plugin to platform
+2. Load sealed agent charter
+3. Agent operates with embedded governance
+4. Escalations logged back to platform
+5. Full audit trail maintained
+
+---
+
+## Phase 2 Features
+
+✅ **Platform Integration**
+- Connect Cowork to your clonehaus.ai account
+- Access all your sealed agents
+- Real-time governance enforcement
+
+✅ **Persistent Storage**
+- Charters saved in database forever
+- Access from any device
+- Version history tracked
+
+✅ **Real Audit Trail**
+- All escalations logged to platform
+- Named human accountability
+- Compliance-ready documentation
+
+✅ **Bidirectional Logging**
+- Escalations flow back to platform
+- Activity tracked in real-time
+- Complete governance lifecycle
+
+---
+
+## Framework Support
+
+Framework exports happen on the platform after your charter is designed and sealed, then the governed agent is deployed into Cowork.
+
+### Supported Frameworks
+
 - **LangChain** - Python runnable chain with GovernanceGuard
 - **LangGraph** - StateGraph with authority checkpoint
 - **CrewAI** - Agent with governance-mapped role/goal/backstory
-- **N8N** - Importable JSON workflow with 5 nodes
+- **N8N** - Importable JSON workflow with governance nodes
 - **AutoGen** - ConversableAgent with reply_func guard
 - **Semantic Kernel** - IFunctionInvocationFilter (Python & C#)
 
 ### Want to add a framework?
-See [CONTRIBUTING.md](CONTRIBUTING.md) - we welcome PRs!
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) - we welcome PRs.
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 - [Installation Guide](docs/installation.md)
 - [Quick Start Tutorial](docs/quickstart.md)
@@ -79,31 +161,31 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) - we welcome PRs!
 
 ---
 
-## 🎓 Example: Legal Agent
-```
-/clonehaus:create-charter
+## Example: Platform-First Legal Agent
 
-Agent Type: Legal
-Decision Authority: Advisory (can recommend, cannot approve)
-Data Access: Confidential (NDAs, contracts - no privileged comms)
-External Comms: Internal only
-System Access: Read-only
-Escalation: >$500K liability, non-standard terms
+1. Create a Legal Advisory Agent on [clonehaus.ai](https://clonehaus.ai)
+2. Set Decision Authority to Advisory (L2)
+3. Limit Data Access to Confidential contract materials
+4. Restrict External Communication to internal stakeholders
+5. Add escalation triggers such as `liability > $500K` and non-standard terms
+6. Ratify with your General Counsel and seal the agent
+7. In Cowork, connect and load it:
 
-/clonehaus:export-context --framework=langchain
-
-✓ Generated: clonehaus_legal_agent.py
+```text
+/clonehaus:connect
+/clonehaus:list
+/clonehaus:load "Legal Advisory Agent"
 ```
 
 See [complete example](examples/legal_agent_example.md)
 
 ---
 
-## 🔒 Philosophy: Outside-the-Loop Governance
+## Philosophy: Outside-the-Loop Governance
 
-Clonehaus operates **upstream of deployment** - at design time, where humans can deliberate.
+Clonehaus operates upstream of runtime behavior. Governance is designed at decision time on the platform, where humans can deliberate clearly, then deployed into Cowork with accountability intact.
 
-We don't monitor your agents at runtime. We help you define what they're allowed to do before they run.
+We do not treat governance as an afterthought inside the session. The charter is created, reviewed, ratified, sealed, and then enforced when the agent runs.
 
 **"We govern upstream so everything downstream runs cleaner."**
 
@@ -111,7 +193,7 @@ Read more: [clonehaus.ai/northstar](https://clonehaus.ai)
 
 ---
 
-## 🏛️ EU AI Act Compliance
+## EU AI Act Compliance
 
 This plugin helps address:
 - **Article 9** - Risk management system (authority boundaries + escalation)
@@ -123,24 +205,23 @@ This plugin helps address:
 
 ---
 
-## 🛠️ Development Status
+## Development Status
 
-**Current:** v0.1.0 (Standalone Plugin)
-- ✓ Local charter creation
-- ✓ Framework code generation
-- ✓ Basic compliance checking
+**Current:** v0.2.0 (Phase 2 Platform Integration)
+- ✓ Platform-connected Cowork workflow
+- ✓ Sealed agent loading from clonehaus.ai
+- ✓ Audit trail and escalation logging
 
-**Next:** v0.2.0 (Platform Integration)
-- [ ] MCP integration
-- [ ] Persistent storage
-- [ ] Version history
+**Next:**
+- [ ] Expanded platform APIs
+- [ ] Richer session telemetry
 - [ ] Advanced compliance features
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md)
+We welcome contributions. See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 **Ways to contribute:**
 - Add new framework templates
@@ -151,30 +232,19 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ---
 
-## 📄 License
+## License
 
 MIT License - see [LICENSE](LICENSE) for details
 
 ---
 
-## 💬 Support
+## Support
 
+- **Platform:** [clonehaus.ai](https://clonehaus.ai)
+- **GitHub:** [LennartLoupe/clonehaus-governance](https://github.com/LennartLoupe/clonehaus-governance)
 - **Issues:** [GitHub Issues](https://github.com/LennartLoupe/clonehaus-governance/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/LennartLoupe/clonehaus-governance/discussions)
 - **Email:** info@clonehaus.ai
-- **Website:** [clonehaus.ai](https://clonehaus.ai)
 
 ---
 
-## 🌟 Acknowledgments
-
-Built for the AI governance community.
-
-Special thanks to:
-- Anthropic for Claude Cowork
-- The LangChain, CrewAI, and N8N communities
-- Early testers and contributors
-
----
-
-**Clonehaus Governance Plugin** | [Documentation](docs/) | [Examples](examples/) | [Changelog](CHANGELOG.md)
+**Clonehaus Governance Plugin** | [Platform](https://clonehaus.ai) | [Documentation](docs/) | [Examples](examples/) | [GitHub](https://github.com/LennartLoupe/clonehaus-governance)
