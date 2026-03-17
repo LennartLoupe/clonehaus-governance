@@ -1,179 +1,230 @@
-# Quick Start: Create Your First Agent Charter
+# Quick Start: Deploy Your First Governed Agent
 
-**Goal:** In 5 minutes, you'll create a governance charter for an AI agent, validate EU AI Act compliance, and export working code.
+**Goal:** In 10 minutes, design an agent charter on clonehaus.ai and deploy it in Cowork.
 
 **Prerequisites:**
-- Clonehaus Governance Plugin installed ([installation guide](installation.md))
-- Claude Cowork on a paid plan
+- [clonehaus.ai account](https://clonehaus.ai) (sign up free)
+- [Claude Cowork](https://claude.ai/cowork) (paid plan)
+- Clonehaus plugin installed ([installation guide](installation.md))
 
 ---
 
-## Scenario
+## Step 1: Design Charter (clonehaus.ai) - 5 min
 
-You're deploying a legal advisory agent to help your in-house team review NDAs and commercial contracts. Let's define its authority boundaries so it can support the team without approving agreements, sending outside messages, or operating beyond its lane.
+### Create Your Agent
 
----
+1. Log into [clonehaus.ai](https://clonehaus.ai)
+2. Click "Register New Agent"
+3. Fill in basic info:
+   - **Name:** Legal Advisory Agent
+   - **Type:** Legal
+   - **Context:** Reviews NDAs and commercial contracts
 
-## Step 1: Create the Charter (3 minutes)
+### Define Authority Boundaries
 
-Run the charter creation command:
+Configure the 5 categories:
 
-```text
-/clonehaus:create-charter
-```
+**Decision Authority:** L2 (Advisory)
+- Can recommend actions, cannot approve
 
-Follow the interactive flow. Here's what to answer:
+**Data Access:** L3 (Confidential)
+- Can access contracts, not privileged communications
 
-```text
-Step 1 - Agent context:
-Legal review for commercial contracts and NDAs
+**External Communication:** L1 (Internal only)
+- Legal team only, no external contacts
 
-Step 2 - Decision Authority:
-L2 - Advisory
-(Agent can recommend but not approve)
+**System Access:** L1 (Read-only)
+- Can query systems, cannot modify
 
-Step 3 - Data Access:
-L3 - Confidential
-(Can access contracts, NDAs, but not privileged communications)
+**Escalation Triggers:**
+- Liability > $500K
+- Scope boundary
+- Ambiguity
 
-Step 4 - External Communication:
-L1 - Internal Only
-(Team communication only, no external contacts)
+### Ratify the Charter
 
-Step 5 - System Access:
-L1 - Read-Only
-(Can query but not modify systems)
-
-Step 6 - Escalation Triggers:
-scope boundary, risk sensitivity, ambiguity, liability > $500K
-```
-
-You'll see a charter summary like:
-
-```text
-Charter summary:
-
-Agent type: Legal review
-Decision authority: Advisory (L2)
-Data access: Confidential (L3)
-External communication: Internal Only (L1)
-System access: Read-Only (L1)
-Escalation triggers: 4 configured + custom threshold
-```
-
-At this point, you have a draft charter with clear authority boundaries across all 5 governance categories.
+1. Review the auto-generated LPS specification
+2. Enter your name and role
+3. Type `I RATIFY`
+4. Agent status changes to **SEALED** ✓
 
 ---
 
-## Step 2: Check Compliance (30 seconds)
+## Step 2: Generate API Key (clonehaus.ai) - 1 min
 
-Validate against EU AI Act requirements:
+1. Navigate to **Settings → API Keys**
+2. Click **"Generate New Key"**
+3. Copy the key (shown only once!)
+4. Store securely
 
-```text
-/clonehaus:check-compliance
-```
-
-Expected output:
-
-```text
-EU AI Act Compliance Check
-High-Risk System Assessment:
-☑ Legal advisory system -> HIGH-RISK (Art. 6)
-Compliance Score: 75% (3 of 4 core articles)
-Gaps:
-⚠ Charter not yet ratified - use /clonehaus:ratify
-Next Step: Ratify charter for full compliance
-```
-
-This gives you a quick compliance snapshot and shows exactly what still needs human accountability.
+Example key: `ck_a8f3j2k9d8s7h4g6w2e1r5t7y9u0i8o7p6`
 
 ---
 
-## Step 3: Ratify the Charter (1 minute)
+## Step 3: Connect Plugin (Cowork) - 1 min
 
-Create accountability record:
-
-```text
-/clonehaus:ratify
-```
-
-Follow prompts:
+Open Cowork and run:
 
 ```text
-- Name: Your name
-- Role: Your title
-- Organization: Your company
-- Type: I RATIFY
+/clonehaus:connect
 ```
 
-You'll get:
+Paste your API key when prompted.
+
+**Success message:**
 
 ```text
-✓ Charter Ratified
-Ratified by: [Your Name], [Your Title]
-Date: [Timestamp]
-Charter Version: 1.0
+✓ Connected to clonehaus.ai
+Account: you@company.com
+Organization: Your Company
+You can now load your governed agents with /clonehaus:list
 ```
-
-This is the moment the charter moves from draft governance design to named human accountability.
 
 ---
 
-## Step 4: Export Code (30 seconds)
+## Step 4: Deploy Agent (Cowork) - 1 min
 
-Generate framework-specific governance code:
+### List Your Agents
 
 ```text
-/clonehaus:export-context --framework=langchain
+/clonehaus:list
 ```
 
-You'll receive complete Python code ready to use in your LangChain project.
+**You'll see:**
+
+```text
+Your Governed Agents
+
+Legal Advisory Agent
+Type: Legal | Status: SEALED
+Ratified by: Your Name, Your Role
+Date: March 16, 2026
+Authority: Advisory (L2)
+
+Load an agent:
+/clonehaus:load "Legal Advisory Agent"
+```
+
+### Load the Agent
+
+```text
+/clonehaus:load "Legal Advisory Agent"
+```
+
+**Agent loaded!** You'll see complete charter details and confirmation that governance is active.
+
+---
+
+## Step 5: Use Governed Agent (Cowork) - 2 min
+
+### Try It Out
+
+Ask the agent a question:
+
+```text
+Review this NDA for liability risks
+```
+
+**Agent responds with:**
+- Analysis within its L2 (Advisory) boundaries
+- Cannot approve, only recommend
+- Will escalate if liability > $500K
+
+### Watch Governance in Action
+
+If you ask it to do something outside its authority:
+
+```text
+Approve this contract for me
+```
+
+**Agent responds:**
+
+```text
+I cannot approve contracts. My Decision Authority is Advisory (L2),
+which means I can analyze and recommend, but all approvals must
+come from authorized legal team members.
+I can provide my analysis and recommendation if you'd like.
+```
+
+**Boundaries enforced!** ✓
 
 ---
 
 ## What You've Accomplished
 
-In 5 minutes, you:
+In 10 minutes, you:
 
-- ✓ Defined clear authority boundaries for an AI agent
-- ✓ Validated EU AI Act compliance (Articles 9, 11, 13, 14)
-- ✓ Created named accountability (ratification record)
-- ✓ Generated production-ready governance code
+✅ **Designed governance charter** on clonehaus.ai
+✅ **Created accountability record** (named ratification)
+✅ **Deployed governed agent** in Cowork
+✅ **Established audit trail** (escalations logged to platform)
 
-Your legal agent now has:
-
-- **Clear limits:** Can recommend, cannot approve
-- **Data boundaries:** Access to contracts, not privileged docs
-- **Escalation triggers:** Stops at $500K liability or ambiguity
-- **Audit trail:** Ratified by named human with timestamp
+Your agent now:
+- ✓ Operates within defined boundaries
+- ✓ Escalates when triggers hit
+- ✓ Logs activity to platform
+- ✓ Maintains accountability chain
 
 ---
 
 ## Next Steps
 
-**Try other frameworks:**
+### Create More Agents
 
-```text
-/clonehaus:export-context --framework=n8n
-/clonehaus:export-context --framework=crewai
-```
+Design agents for different use cases:
+- Sales support (L3 Operational)
+- Finance operations (L3 Operational)
+- HR policy assistant (L1 Informational)
 
-**Create more agents:**
+Each with its own authority boundaries and ratification.
 
-- See [examples](/Users/lennartzanders/dev_clean/clonehaus-governance/examples) for legal, sales, and finance agents
-- Each agent can have different authority levels
+### Share with Team
 
-**Learn more:**
+Generate API key and share with authorized team members:
+1. They run `/clonehaus:connect` with the key
+2. They can load any sealed agent you've created
+3. All activity logged to your organization's audit trail
 
-- [Installation guide](/Users/lennartzanders/dev_clean/clonehaus-governance/docs/installation.md)
-- [Full legal walkthrough](/Users/lennartzanders/dev_clean/clonehaus-governance/examples/legal_agent_example.md)
-- [Repository overview](/Users/lennartzanders/dev_clean/clonehaus-governance/README.md)
+### View Activity
 
-**Get help:**
+Back on clonehaus.ai:
+1. Navigate to agent detail page
+2. Click "History" tab
+3. See all escalations and deployment events
 
-- GitHub Issues: `https://github.com/LennartLoupe/clonehaus-governance/issues`
-- Email: `info@clonehaus.ai`
+### Export for Custom Infrastructure
+
+If you want to deploy outside Cowork:
+1. Click "Export" on agent detail page
+2. Select framework (LangChain, N8N, CrewAI, etc.)
+3. Download generated governance code
+4. Integrate into your application
 
 ---
 
-**Ready to deploy governed AI agents? Start with `/clonehaus:create-charter`** 🚀
+## Troubleshooting
+
+**Can't see my agent in `/clonehaus:list`?**
+→ Make sure agent status is SEALED (not DRAFT)
+
+**Connection failed?**
+→ Verify API key is correct
+→ Check your internet connection
+
+**Agent not loading?**
+→ Use exact agent name from `/clonehaus:list`
+→ Names are case-insensitive
+
+---
+
+## Learn More
+
+- [Complete Platform Integration Example](../examples/platform-integration-example.md)
+- [Migration from Phase 1](phase2-migration.md)
+- [Installation Guide](installation.md)
+- [Framework Integration Guides](frameworks/)
+
+---
+
+**Ready to deploy governed AI agents? Start at [clonehaus.ai](https://clonehaus.ai)** 🚀
