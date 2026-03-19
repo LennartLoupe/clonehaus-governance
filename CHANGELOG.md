@@ -14,6 +14,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Real-time escalation notifications
 - Usage analytics dashboard
 
+## [0.2.1] - 2026-03-19
+
+### Fixed
+- Plugin compatibility: Force cache refresh in Cowork
+- No functional changes from v0.2.0
+
+This is a technical release to resolve plugin command recognition issues in Cowork.
+All v0.2.0 features remain unchanged.
+
 ## [0.2.0] - 2026-03-16
 
 ### 🎉 Major Release: Platform Integration

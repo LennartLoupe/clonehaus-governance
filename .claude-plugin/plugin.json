@@ -2,7 +2,7 @@
   "name": "clonehaus-governance",
   "displayName": "Clonehaus Governance",
   "description": "Deploy governed AI agents from clonehaus.ai into Cowork with full audit trail and accountability. Design governance on the platform, deploy in Cowork.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": {
     "name": "Clonehaus",
     "email": "hello@clonehaus.ai",
