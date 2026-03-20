@@ -2,7 +2,7 @@
   "name": "clonehaus-governance",
   "displayName": "Clonehaus Governance",
   "description": "Deploy governed AI agents from clonehaus.ai into Cowork with full audit trail and accountability. Design governance on the platform, deploy in Cowork.",
-  "version": "0.2.2",
+  "version": "0.2.1",
   "author": {
     "name": "Clonehaus",
     "email": "hello@clonehaus.ai",
@@ -32,6 +32,23 @@
   },
   "skills": [
     "governance"
+  ],
+  "commands": [
+    {
+      "name": "connect",
+      "file": "commands/connect.md",
+      "description": "Connect to your clonehaus.ai account"
+    },
+    {
+      "name": "list",
+      "file": "commands/list-agents.md",
+      "description": "Show your governed agents from clonehaus.ai"
+    },
+    {
+      "name": "load",
+      "file": "commands/load-agent.md",
+      "description": "Load a governed agent into this Cowork session"
+    }
   ],
   "requirements": {
     "platform_account": "Requires clonehaus.ai account with sealed agents"

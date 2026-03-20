@@ -14,26 +14,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Real-time escalation notifications
 - Usage analytics dashboard
 
-## [0.2.2] - 2026-03-19
-
-### Fixed
-- **BREAKING:** Restructured plugin to use skills/ format (commands/ is deprecated)
-- Moved connect, list, load commands to individual skill directories
-- Removed legacy commands/ directory
-- Updated plugin.json to remove commands array (auto-discovery from skills/)
-
-### Changed
-- Each command is now a skill under skills/ directory:
-  - skills/connect/SKILL.md
-  - skills/list-agents/SKILL.md
-  - skills/load-agent/SKILL.md
-- Plugin structure now compatible with current Cowork requirements
-
-### Migration
-No user action required - plugin will work correctly after reinstalling v0.2.2.
-
-This fixes the "no skills or agents" error in v0.2.0 and v0.2.1.
-
 ## [0.2.1] - 2026-03-19
 
 ### Fixed

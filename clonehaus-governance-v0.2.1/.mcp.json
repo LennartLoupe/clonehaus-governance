@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "clonehaus-platform": {
+      "url": "https://app.clonehaus.ai/api/mcp",
+      "description": "Clonehaus Platform API for governed agent deployment"
+    }
+  }
+}
