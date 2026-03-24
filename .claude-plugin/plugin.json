@@ -1,6 +1,6 @@
 {
-  "name": "clonehaus-governance",
-  "displayName": "Clonehaus Governance",
+  "name": "clonehaus-governance-v2",
+  "displayName": "Clonehaus Governance v2",
   "description": "Deploy governed AI agents from clonehaus.ai into Cowork with full audit trail and accountability. Design governance on the platform, deploy in Cowork.",
   "version": "0.2.2",
   "author": {
@@ -8,10 +8,10 @@
     "email": "hello@clonehaus.ai",
     "url": "https://clonehaus.ai"
   },
-  "homepage": "https://github.com/LennartLoupe/clonehaus-governance",
+  "homepage": "https://github.com/LennartLoupe/clonehaus-governance-v2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LennartLoupe/clonehaus-governance"
+    "url": "https://github.com/LennartLoupe/clonehaus-governance-v2"
   },
   "license": "MIT",
   "keywords": [
@@ -38,8 +38,8 @@
   },
   "links": {
     "platform": "https://clonehaus.ai",
-    "docs": "https://github.com/LennartLoupe/clonehaus-governance/tree/main/docs",
+    "docs": "https://github.com/LennartLoupe/clonehaus-governance-v2/tree/main/docs",
     "support": "mailto:info@clonehaus.ai",
-    "github": "https://github.com/LennartLoupe/clonehaus-governance"
+    "github": "https://github.com/LennartLoupe/clonehaus-governance-v2"
   }
 }

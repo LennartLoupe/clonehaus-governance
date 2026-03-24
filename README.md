@@ -18,11 +18,11 @@ Deploy governed AI agents from clonehaus.ai into Cowork. Design governance on th
 
 ```bash
 # Install the plugin
-claude plugin add https://github.com/LennartLoupe/clonehaus-governance
+claude plugin add https://github.com/LennartLoupe/clonehaus-governance-v2
 
 # Or install locally
-git clone https://github.com/LennartLoupe/clonehaus-governance.git
-cd clonehaus-governance
+git clone https://github.com/LennartLoupe/clonehaus-governance-v2.git
+cd clonehaus-governance-v2
 claude plugin install .
 ```
 
@@ -241,10 +241,10 @@ MIT License - see [LICENSE](LICENSE) for details
 ## Support
 
 - **Platform:** [clonehaus.ai](https://clonehaus.ai)
-- **GitHub:** [LennartLoupe/clonehaus-governance](https://github.com/LennartLoupe/clonehaus-governance)
-- **Issues:** [GitHub Issues](https://github.com/LennartLoupe/clonehaus-governance/issues)
+- **GitHub:** [LennartLoupe/clonehaus-governance-v2](https://github.com/LennartLoupe/clonehaus-governance-v2)
+- **Issues:** [GitHub Issues](https://github.com/LennartLoupe/clonehaus-governance-v2/issues)
 - **Email:** info@clonehaus.ai
 
 ---
 
-**Clonehaus Governance Plugin** | [Platform](https://clonehaus.ai) | [Documentation](docs/) | [Examples](examples/) | [GitHub](https://github.com/LennartLoupe/clonehaus-governance)
+**Clonehaus Governance Plugin** | [Platform](https://clonehaus.ai) | [Documentation](docs/) | [Examples](examples/) | [GitHub](https://github.com/LennartLoupe/clonehaus-governance-v2)
